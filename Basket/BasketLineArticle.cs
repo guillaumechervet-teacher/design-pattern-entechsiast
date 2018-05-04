@@ -4,13 +4,10 @@ using System.Text;
 
 namespace Basket
 {
-    namespace Basket
+    public struct BasketLineArticle
     {
-        public struct BasketLineArticle
-        {
-            public string Id { get; set; }
-            public int Number { get; set; }
-            public string Label { get; set; }
-        }
+        public string Id { get; set; }
+        public int Number { get; set; }
+        public string Label { get; set; }
     }
 }
