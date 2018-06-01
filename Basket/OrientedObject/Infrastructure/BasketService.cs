@@ -60,6 +60,7 @@ namespace Basket.OrientedObject.Infrastructure
             {
                 var articleId = basketLineArticle.Id;
                 var articleDatabase = GetFromDatabase(articleId);
+                list.Add(new BasketLine(new Article(articleDatabase.Price, articleDatabase.Category),basketLineArticle.Number));
 
             }
 
