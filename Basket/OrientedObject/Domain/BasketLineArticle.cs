@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Basket
+﻿namespace Basket.OrientedObject.Domain
 {
     public struct BasketLineArticle
     {
