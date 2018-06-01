@@ -1,11 +1,11 @@
 ﻿namespace Basket.OrientedObject.Domain.Model
 {
-    public class BasketLine2    
+    public class BasketLine    
     {
         private readonly Article _article;
         private readonly int _number;
 
-        public BasketLine2(Article article, int number)
+        public BasketLine(Article article, int number)
         {
             _article = article;
             _number = number;

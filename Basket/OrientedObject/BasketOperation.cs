@@ -19,7 +19,7 @@ namespace Basket.OrientedObject
         public int Calcultae(List<BasketLineArticle> basketLineArticles)
         {
             var basket = _basketService.GetBasket(basketLineArticles);
-            return basket.Calulate();
+            return basket.Calculate();
         }
 
     }
