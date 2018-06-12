@@ -59,57 +59,51 @@ namespace BasketTest
             public int ExpectedPrice { get; set; }
         }
 
-        private static IEnumerable<object[]> Baskets
+        private static IEnumerable<object[]> Baskets => new[]
         {
-            get
+            new object[]
             {
-                return new[]
+                new BasketTest()
                 {
-                    new object[]
+                    BasketLineArticles = new List<BasketLineArticle>
                     {
-                        new BasketTest()
+                        new BasketLineArticle {Id = "1", Number = 12, Label = "Banana"},
+                        new BasketLineArticle
                         {
-                            BasketLineArticles = new List<BasketLineArticle>
-                            {
-                                new BasketLineArticle {Id = "1", Number = 12, Label = "Banana"},
-                                new BasketLineArticle
-                                {
-                                    Id = "2",
-                                    Number = 1,
-                                    Label = "Fridge electrolux"
-                                },
-                                new BasketLineArticle
-                                {
-                                    Id = "3",
-                                    Number = 4,
-                                    Label = "Chair"
-                                }
-                            },
-                            ExpectedPrice = 84868
+                            Id = "2",
+                            Number = 1,
+                            Label = "Fridge electrolux"
+                        },
+                        new BasketLineArticle
+                        {
+                            Id = "3",
+                            Number = 4,
+                            Label = "Chair"
                         }
                     },
-                    new object[]
+                    ExpectedPrice = 84868
+                }
+            },
+            new object[]
+            {
+                new BasketTest()
+                {
+                    BasketLineArticles = new List<BasketLineArticle>
                     {
-                        new BasketTest()
-                        {
-                            BasketLineArticles = new List<BasketLineArticle>
-                            {
-                                new BasketLineArticle {Id = "1", Number = 20, Label = "Banana"},
-                                new BasketLineArticle {Id = "3", Number = 6, Label = "Chair"}
-                            },
-                            ExpectedPrice = 37520
-                        }
+                        new BasketLineArticle {Id = "1", Number = 20, Label = "Banana"},
+                        new BasketLineArticle {Id = "3", Number = 6, Label = "Chair"}
                     },
-                };
-            }
-        }
+                    ExpectedPrice = 37520
+                }
+            },
+        };
 
         [TestMethod]
         [DynamicData("Baskets")]
         public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
         {
-            var basKetService = new BasketService();
-            var basketOperation = new BasketOperation(basKetService);
+            var basketService = new BasketService();
+            var basketOperation = new BasketOperation(basketService);
             var amountTotal = basketOperation.CalculateAmout(basketTest.BasketLineArticles);
             Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
         }
