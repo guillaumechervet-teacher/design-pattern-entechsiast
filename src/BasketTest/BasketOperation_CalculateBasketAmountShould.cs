@@ -4,7 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Basket;
+using Basket.OrientedObject;
 using Basket.OrientedObject.Domain;
+using Basket.OrientedObject.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
@@ -106,11 +108,12 @@ namespace BasketTest
         [DynamicData("Baskets")]
         public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
         {
-            var basketLineArticles = basketTest.BasketLineArticles;
-            var amountTotal = ImperativeProgramming.AmountTotal(basketLineArticles);
+            var basKetService = new BasketService();
+            var basketOperation = new BasketOperation(basKetService);
+            var amountTotal = basketOperation.CalculateAmout(basketTest.BasketLineArticles);
             Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
         }
 
-        
+
     }
 }

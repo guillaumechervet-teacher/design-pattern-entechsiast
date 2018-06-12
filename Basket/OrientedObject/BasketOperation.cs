@@ -11,16 +11,13 @@ namespace Basket.OrientedObject
 
         public BasketOperation(Infrastructure.BasketService basketService)
         {
-
             _basketService = basketService;
-            
         }
 
-        public int Calcultae(List<BasketLineArticle> basketLineArticles)
+        public int CalculateAmout(List<BasketLineArticle> basketLineArticles)
         {
             var basket = _basketService.GetBasket(basketLineArticles);
             return basket.Calculate();
         }
-
     }
 }
